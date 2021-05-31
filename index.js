@@ -109,10 +109,13 @@ const askTask = () => {
                 dal.viewAll(queries.allDepts)
                 .then(() => askTask());
             } else if (task === 'ADD_EMPLOYEE') {
+                dal.viewAll(queries.allEmployees)
                 addEmployee(askTask);
             } else if (task === 'ADD_ROLE') {
+                dal.viewAll(queries.allRoles)
                 addRole(askTask);
             } else if (task === 'ADD_DEPARTMENT') {
+                dal.viewAll(queries.allDepts)
                 addDept(askTask);
             } else if (task === 'UPDATE_EMPLOYEE') {
                 updateEmployee();
