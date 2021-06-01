@@ -8,20 +8,22 @@ Task is to architect and build a solution for managing a company's employees usi
 
 As a business owner
 I want to be able to view and manage the departments, roles, and employees in my company
-So that I can organize and plan my business.
+so that I can organize and plan my business.
 
 # Acceptance Criteria
 
-1. When I try to add departments ,role, employees through command-line it should allow users to do.
+1. When I try to add departments ,role, employees through command-line it should allow users to do so, the added values are added in MySql database.
 
-2. When I try to view departments, roles, employees through command-line it should allow users to do.
+2. When I try to view departments, roles, employees through command-line it should allow users to do so, retreiving from MySql database.
 
-3. When I try to update employee roles should be able to update the role through command-line.
+3. When I try to update employee roles, should be able to update the role through command-line and the updated values are reflected in MySql database.
 
 # Mock-Up
 The following image shows a mock-up of the generated appearance and functionality:
+![Employee Tracker](./assets/Mockup.PNG)
 
 # Link to the recording video
+
 
 # Github Link
 
