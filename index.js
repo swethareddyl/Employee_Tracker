@@ -59,7 +59,7 @@ const questTask = [
             new inquirer.Separator('=== UPDATE INFO ==='),
             {
                 name : 'update employee role',
-                value : 'UPDATE_EMPLOYEE_ROLE',
+                value : 'UPDATE_EMPLOYEE',
             },
            
             new inquirer.Separator('=== DELETE INFO ==='), 
@@ -107,6 +107,7 @@ const askTask = () => {
                 .then(() => askTask());
             } else if (task === 'VIEW_ALL_DEPARTMENTS') {
                 dal.viewAll(queries.allDepts)
+                // console.log()
                 .then(() => askTask());
             } else if (task === 'ADD_EMPLOYEE') {
                 dal.viewAll(queries.allEmployees)
@@ -118,7 +119,8 @@ const askTask = () => {
                 dal.viewAll(queries.allDepts)
                 addDept(askTask);
             } else if (task === 'UPDATE_EMPLOYEE') {
-                updateEmployee();
+               updateEmployee().then(()=> askTask());
+               
             } else if (task === 'DELETE_EMPLOYEE') {
                 toDeleteEmployee()
                 .then((answers) => dal.deleteFrom(queries.deleteId, 'employees', Number(answers.empToDelete)))

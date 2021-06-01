@@ -1,41 +1,15 @@
 const inquirer = require('inquirer');
 const connection = require('../config/connection.js');
-const askTask = require('../index');
-
 const { getAllEmp, getAllRoles, getAllManagers } = require('./getAll');
-
-//query to update employee's role
 const updateRole = (answers) => {
-    const askTask = require('../app');
-    connection.query("UPDATE employees SET ? WHERE ?", [{ role_id: answers.newRole}, {id: Number(answers.empl)}],
-    function (err) {
-        if (err) throw err;
-        console.log("Employee's role was successfully updated.")
-        askTask();
-    });
+    return connection.queryPromise('UPDATE employees SET ? WHERE ?', [{ role_id: answers.newRole}, {id: Number(answers.empl)}])
 }
-
-//query to update employee's manager
 const updateManager = (answers) => {
-    const askTask = require('../app');
-    connection.query("UPDATE employees SET ? WHERE ?", [{manager_id: Number(answers.newManager)}, {id: Number(answers.empl)}],
-    function(err) {
-        if (err) throw err;
-        console.log("Employee's manager was successfully update.")
-        askTask();
-    });
+    return connection.queryPromise('UPDATE employees SET ? WHERE ?', [{manager_id: Number(answers.newManager)}, {id: Number(answers.empl)}])
 }
-
-// Add a new employee to the db
 const updateEmployee = () => {
-    Promise.all([getAllEmp(), getAllRoles(), getAllManagers()])
-    .then((values) => {
-        //console.log(values)
-        const allEmployees = values[0];
-        const allRoles = values[1];
-        const allManagers = values[2];
-        return [allEmployees, allRoles, allManagers]
-    })
+    console.log('test')
+    return Promise.all([getAllEmp(), getAllRoles(), getAllManagers()])
     .then(([ allEmployees, allRoles, allManagers ]) =>
         inquirer.prompt([
         {
@@ -73,12 +47,10 @@ const updateEmployee = () => {
         }
     ])).then((answers) => {
         if (answers.updateWhat === "role") {
-            updateRole(answers);
+            return updateRole(answers);
         } else {
-            updateManager(answers);
+            return updateManager(answers);
         }
-
     }).catch((err) => console.log(err));
 };
-
 module.exports = updateEmployee
