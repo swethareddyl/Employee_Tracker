@@ -23,8 +23,8 @@ The following image shows a mock-up of the generated appearance and functionalit
 ![Employee Tracker](./assets/Mockup.PNG)
 
 # Link to the recording video
-
+https://github.com/swethareddyl/Employee_Tracker/blob/main/assets/EmployeeTrackerRecording.webm
 
 # Github Link
-
+https://github.com/swethareddyl/Employee_Tracker
 
